@@ -32,9 +32,7 @@ export async function verifyJwt<TPayload extends JWTPayload>(input: string) {
 
 app.post("/query", async (c) => {
 	const jwt = await c.req.text();
-	console.log("blah hi jwt", jwt);
 	const body = await verifyJwt<QueryBody>(jwt);
-	console.log("blah hi body", body);
 
 	if (!body) {
 		return new Response("Unauthorized", {
@@ -52,7 +50,6 @@ app.post("/query", async (c) => {
 			rowMode: method === "all" ? "array" : undefined,
 			// biome-ignore lint/suspicious/noExplicitAny: rawMode isnt recognized by the types, but only works with it
 		} as any);
-		console.log("blah hi result", result.rows);
 
 		return Response.json(result.rows);
 		// biome-ignore lint/suspicious/noExplicitAny: This is a runtime error, so we can't know the type of `e` ahead of time
