@@ -2,7 +2,7 @@
 
 # Drizzle Pg Proxy
 
-Simple implementation of Drizzle HTTP Proxy for postgres as a standalone service. It uses [hono](https://hono.dev/) as the http server and implements the `/query` endpoint to execute queries on a postgres database as show in the [drizzle docs](https://orm.drizzle.team/docs/get-started-postgresql#http-proxy). It also uses expects all queries to be signed with a JWT token to ensure that only authorized sources can execute queries.
+Simple implementation of Drizzle HTTP Proxy for postgres as a standalone service. It uses [hono](https://hono.dev/) as the http server, [jose](https://github.com/panva/jose) for JWT, and implements the `/query` endpoint to execute queries on a postgres database as show in the [drizzle docs](https://orm.drizzle.team/docs/get-started-postgresql#http-proxy). It expects all queries to be signed with a JWT token to ensure that only authorized sources can execute queries.
 
 I've found that running the proxy in a separate service is useful in avoiding connection limits on the database.
 
