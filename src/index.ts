@@ -54,6 +54,7 @@ app.post("/query", async (c) => {
 		return Response.json(result.rows);
 		// biome-ignore lint/suspicious/noExplicitAny: This is a runtime error, so we can't know the type of `e` ahead of time
 	} catch (e: any) {
+		console.error(e);
 		return new Response(e.message, {
 			status: 500,
 		});
