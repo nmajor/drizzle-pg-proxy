@@ -20,6 +20,25 @@ openssl rand -hex 64
 # Example output: 5af18615c9762d848ec19241a705c6816cfc0392dd80cae2f54ec2f9b0f2fd36db37ae88fdb752ed6b991e12f65214ada08528de6a85712639586c7cc3c31808
 ```
 
+Then you can use the `db` object to query your database as you would with drizzle.
+
+### Deploying the docker container
+
+The docker container requires 2 variables to be set:
+
+- `APP_SECRET`: The secret key used to sign the JWT
+- `DATABASE_URL`: The postgres connection string
+
+### Deploying on Railway
+
+This template can easily be deployed with a linked postgresql database on Railway:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/yvPIKJ?referralCode=-NuOAq)
+
+The template will automatically link the proxy service with the postgres database and set the `DATABASE_URL` environment variable. You will need to set the `APP_SECRET` environment variable manually.
+
+After deploying on Railway you can use the public HTTP endpoint that Railway generates and set it to the `DATABASE_PROXY` for the drizzle code example below. 
+
 ### Usage in Drizzle
 
 In your app using drizzle, you need to follow the postgres http proxy connection setup as described in the [drizzle docs](https://orm.drizzle.team/docs/get-started-postgresql#http-proxy).
@@ -90,23 +109,3 @@ export const db = drizzle(
 	{ schema },
 );
 ```
-
-Then you can use the `db` object to query your database as you would with drizzle.
-
-### Deploying the docker container
-
-The docker container requires 2 variables to be set:
-
-- `APP_SECRET`: The secret key used to sign the JWT
-- `DATABASE_URL`: The postgres connection string
-
-### Deploying on Railway
-
-This template can easily be deployed with a linked postgresql database on Railway:
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/yvPIKJ?referralCode=-NuOAq)
-
-The template will automatically link the proxy service with the postgres database and set the `DATABASE_URL` environment variable. You will need to set the `APP_SECRET` environment variable manually.
-
-After deploying on Railway you can use the public HTTP endpoint that Railway generates and set it to the `DATABASE_PROXY` for the drizzle code example above. 
-
