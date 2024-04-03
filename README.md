@@ -31,6 +31,8 @@ The docker container requires 2 variables to be set:
 - `APP_SECRET`: The secret key used to sign the JWT
 - `DATABASE_URL`: The postgres connection string
 
+The service listens on port `3030` and exposes the `/query` endpoint. Drizzle needs to be linked specifically to this `/query` endpoint.
+
 ### Deploying on Railway
 
 This template can easily be deployed with a linked postgresql database on Railway:
@@ -79,7 +81,7 @@ export function isStringISODate(str: string): boolean {
 export const db = drizzle(
 	async (sql, params, method) => {
 		try {
-			const response = await fetch(env.DATABASE_PROXY, {
+			const response = await fetch(env.DATABASE_PROXY + "/query", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/jwt",
