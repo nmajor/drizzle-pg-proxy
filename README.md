@@ -39,7 +39,7 @@ This template can easily be deployed with a linked postgresql database on Railwa
 
 The template will automatically link the proxy service with the postgres database and set the `DATABASE_URL` environment variable. You will need to set the `APP_SECRET` environment variable manually.
 
-After deploying on Railway you can use the public HTTP endpoint that Railway generates and set it to the `DATABASE_PROXY` for the drizzle code example below. 
+After deploying on Railway you can use the public HTTPS endpoint that Railway generates and set it to the `DATABASE_PROXY` for the drizzle code example below. 
 
 ### Usage in Drizzle
 
