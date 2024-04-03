@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.9.0",
+    "hono": "^4.1.7",
+    "jose": "^5.2.3",
+    "pg": "^8.11.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pg": "^8.11.4",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3"
+  }
+}
